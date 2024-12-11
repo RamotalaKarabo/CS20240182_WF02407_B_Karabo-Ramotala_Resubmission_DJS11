@@ -3,6 +3,7 @@ import categories from '../utils/Categories';
 
   export const fetchAllPodcasts = async (setPodcasts, setLoading, setError) => {
     try {
+      //fetch all podcasts
         const response = await fetch('https://podcast-api.netlify.app');
         if(!response.ok){
             throw new Error('Failed to fetch podcasts');
@@ -21,6 +22,7 @@ import categories from '../utils/Categories';
   let filteredPodcasts = [{}]
 
     try {
+      //fetch genre details
       const response = await fetch('https://podcast-api.netlify.app/');
       if(!response.ok){
           throw new Error('Failed to fetch podcasts');
@@ -33,7 +35,7 @@ import categories from '../utils/Categories';
 
   for(let x of podcastData){
    x.genres.forEach(element => {
-    console.log(element == genreID);
+
     if(element == genreID){
       try {
         const show = fetch(`https://podcast-api.netlify.app/id/${element}`);

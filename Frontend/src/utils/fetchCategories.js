@@ -3,6 +3,7 @@ import { data } from "react-router-dom";
 // fetch genres from an API endpoint
 
 function fetchCategories(ID, setGenre,setPodcasts, setError){
+    
   const fetchCategory = async () => {
     try {
         const response = await fetch(`https://podcast-api.netlify.app/genre/${ID}`);

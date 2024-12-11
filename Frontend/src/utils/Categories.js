@@ -1,3 +1,4 @@
+//utility function to include my project
 const categories = [
   {
     categoryID: 1,

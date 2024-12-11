@@ -48,6 +48,9 @@ const Podcast = () => {
   return (
 
     <div>
+      <h1 className="">
+        { show.seasons.length > 0 ? (`${show.seasons.length} Seasons`) : (`${show.seasons.length} Season`)}
+      </h1>
       {show.seasons?.map(podcast => (
         <SeasonCard 
         key={podcast.season} 

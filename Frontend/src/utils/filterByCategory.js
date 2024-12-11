@@ -2,7 +2,7 @@ let podcastData = ""
 let filteredData = []
 
 function filterPodByCategory(id){
-
+//fetch all shows
   const fetchAllPodcasts = async () => {
 
     try {

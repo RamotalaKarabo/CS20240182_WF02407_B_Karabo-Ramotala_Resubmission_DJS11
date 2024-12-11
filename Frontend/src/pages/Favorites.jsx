@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getFavorites } from '../utils/addToFavorites'; 
 import AudioModal from '../components/AudioComponent/AudioModal';
-// import AudioModal from '../components/AudioComponent/AudioModal';
+
 const Favorites = () => {
+  //declare my state variables and initialize some variables
     const [favorites, setFavorites] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false); 
@@ -16,8 +17,6 @@ const Favorites = () => {
     useEffect(() => {
         setFavorites(getFavorites());
     }, []);
-
-    console.log(favorites)
 
     return (
         <div>

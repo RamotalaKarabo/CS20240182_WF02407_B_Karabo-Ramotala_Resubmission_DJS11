@@ -3,7 +3,7 @@ let podData = '';
 function fetchPodcast(ID){
 
   const fetchEpisodes = async () => {
-
+//fetch a show with identified id
     try {
         const response = await fetch(`https://podcast-api.netlify.app/id/${ID}/`);
   
@@ -21,8 +21,5 @@ function fetchPodcast(ID){
   
   fetchEpisodes();
 }
-
-
-console.log(podData);
 
 export default fetchPodcast;
