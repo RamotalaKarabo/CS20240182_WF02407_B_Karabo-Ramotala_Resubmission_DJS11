@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import EpisodeCard from '../components/Podcast_Components/EpisodeCard';
 import LoadingState from '../components/LoadingState/LoadingState';
@@ -48,8 +49,12 @@ const Episodes = () => {
   console.log(show.seasons);
 
   return (
-    <div>
-
+    <div className="">
+      <button className="mx-auto my-4 flex flex-end justify-end align-end">
+        <Link to="/favorites">
+        GoTo Favorites
+        </Link>
+      </button>
       {show.seasons?.map((item, i) => (
         <div>
           {item.season == params.seasonId ? 

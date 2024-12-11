@@ -15,6 +15,7 @@ import AllPodcasts from './pages/AllPodcasts'
 import Podcast from './pages/Podcast'
 import Episodes from './pages/Episodes'
 import Category from './pages/Category'
+import Favorites from './pages/Favorites'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             {/* <Route path="profile" element={<Profile />} /> */}
           </Route>
 
+
           {/* Podcast Route */}
           <Route path="/all-podcasts" element={<PodcastLayout />}>
             <Route index element={<AllPodcasts />} />
@@ -38,6 +40,7 @@ const App = () => {
           
           <Route path="/category/:genreId/:genre" element={<Category />}/>
           <Route path="/:showId/seasons/:seasonId" element={<Episodes />}/>
+          <Route path="/favorites" element={<Favorites/>} />
 
           {/* Authentication Route (Log-In || Sign-In) */}
           <Route path="/" element={<AuthenticationLayout />}>
