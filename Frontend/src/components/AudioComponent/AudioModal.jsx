@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { useParams } from 'react-router-dom';
+import { addToFavorites } from '../../utils/addToFavorites';
 
 
 Modal.setAppElement('#root');  // Important for accessibility
@@ -11,6 +14,10 @@ const AudioModal = ({ isOpen, onRequestClose, audioUrl, audioId, episodeTitle, i
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const params = useParams()
+
+    console.log(params);
 
     useEffect(() => {
         if(isOpen){
@@ -39,6 +46,11 @@ const AudioModal = ({ isOpen, onRequestClose, audioUrl, audioId, episodeTitle, i
     const handleTimeUpdate = () => {
         setCurrentTime(audioRef.current.currentTime);
         localStorage.setItem(audioId, audioRef.current.currentTime);
+    };
+
+    const handleAddToFavorites = (episode) => { 
+        addToFavorites(episode); 
+        alert('Episode added to favorites!'); 
     };
 
     const handleMinimize = () => {
@@ -73,11 +85,22 @@ const AudioModal = ({ isOpen, onRequestClose, audioUrl, audioId, episodeTitle, i
                     onPause={() => setIsPlaying(false)}
                     controls
                 />
+                <div className="flex">
                 <button 
                 onClick={handlePlayPause}
                 className="m-2 p-2 px-4 text-lg cursor-pointer">
                     {isPlaying ? 'Pause' : 'Play'}
                 </button>
+                <button 
+                onClick={() => {
+                    setIsFavorite(!isFavorite);
+                    handleAddToFavorites({ audioUrl, audioId, episodeTitle, img })        
+                }}
+
+                className="flex justify-end align-center items-center">
+                    {isFavorite ? <FontAwesomeIcon icon={faStar} /> : `+ Add To Favorites`}
+                </button>
+                </div>
             </div>
         </Modal>
     );
